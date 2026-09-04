@@ -9,83 +9,113 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f6f8;
-            padding: 15px;
+            background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+            min-height: 100vh;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Структура сетки на 7 дней */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+        }
+
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            background-color: #ccc;
-            border: 1px solid #ccc;
+            gap: 10px;
         }
 
-        /* Заголовки дней недели */
+        /* Day Header Style */
+        .day-column {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
         .day-header {
-            background-color: #555;
-            color: white;
-            padding: 8px 2px;
+            background: #34495e;
+            color: #ffffff;
+            padding: 12px 5px;
             text-align: center;
-            font-size: 12px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        /* Выходные дни (Суббота / Воскресенье) */
         .day-header.weekend {
-            background-color: #e53935;
+            background: #e74c3c;
         }
 
-        /* Карточка дня */
-        .day-card {
-            background-color: white;
-            min-height: 150px;
-            padding: 6px;
-        }
-
+        /* Lessons Container */
         .lessons-list {
             list-style: none;
-            font-size: 11px;
-            line-height: 1.4;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-grow: 1;
         }
 
         .lessons-list li {
-            color: #0056b3;
-            border-bottom: 1px dashed #eee;
-            padding: 3px 0;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            border-left: 3px solid #3498db;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            counter-increment: lesson-counter;
+            display: flex;
+            align-items: center;
         }
 
-        /* Адаптивность для мобильных устройств */
-        @media (max-width: 600px) {
+        .lessons-list li::before {
+            content: counter(lesson-counter) ". ";
+            font-weight: bold;
+            margin-right: 6px;
+            color: #7f8c8d;
+        }
+
+        .lessons-list {
+            counter-reset: lesson-counter;
+        }
+
+        .lessons-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
             .schedule-grid {
-                grid-template-columns: repeat(7, minmax(60px, 1fr));
+                grid-template-columns: repeat(7, minmax(130px, 1fr));
                 overflow-x: auto;
+                padding-bottom: 10px;
             }
-            .day-header { font-size: 10px; }
-            .lessons-list { font-size: 9px; }
         }
     </style>
 </head>
 <body>
 
-    <div style="overflow-x: auto;">
+    <div class="container">
         <div class="schedule-grid">
-            <!-- Дни недели -->
-            <div class="day-header">Понедельник</div>
-            <div class="day-header">Вторник</div>
-            <div class="day-header">Среда</div>
-            <div class="day-header">Четверг</div>
-            <div class="day-header">Пятница</div>
-            <div class="day-header weekend">Суббота</div>
-            <div class="day-header weekend">Воскресенье</div>
-
+            
             <!-- Понедельник -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header">Понедельник</div>
                 <ul class="lessons-list">
                     <li>Русский язык</li>
                     <li>Литература</li>
@@ -95,7 +125,8 @@
             </div>
 
             <!-- Вторник -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header">Вторник</div>
                 <ul class="lessons-list">
                     <li>История</li>
                     <li>Математика</li>
@@ -107,7 +138,8 @@
             </div>
 
             <!-- Среда -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header">Среда</div>
                 <ul class="lessons-list">
                     <li>Физкультура</li>
                     <li>Русский язык</li>
@@ -119,7 +151,8 @@
             </div>
 
             <!-- Четверг -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header">Четверг</div>
                 <ul class="lessons-list">
                     <li>Англ. язык</li>
                     <li>Естествознание</li>
@@ -129,7 +162,8 @@
             </div>
 
             <!-- Пятница -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header">Пятница</div>
                 <ul class="lessons-list">
                     <li>Русский язык</li>
                     <li>Воспитание</li>
@@ -140,7 +174,8 @@
             </div>
 
             <!-- Суббота -->
-            <div class="day-card">
+            <div class="day-column">
+                <div class="day-header weekend">Суббота</div>
                 <ul class="lessons-list">
                     <li>Узбекский язык</li>
                     <li>Инф. и ИТ</li>
@@ -150,7 +185,11 @@
             </div>
 
             <!-- Воскресенье -->
-            <div class="day-card"></div>
+            <div class="day-column">
+                <div class="day-header weekend">Воскресенье</div>
+                <ul class="lessons-list"></ul>
+            </div>
+
         </div>
     </div>
 
