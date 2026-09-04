@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание уроков</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            padding: 15px;
+        }
+
+        /* Структура сетки на 7 дней */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+        }
+
+        /* Заголовки дней недели */
+        .day-header {
+            background-color: #555;
+            color: white;
+            padding: 8px 2px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Выходные дни (Суббота / Воскресенье) */
+        .day-header.weekend {
+            background-color: #e53935;
+        }
+
+        /* Карточка дня */
+        .day-card {
+            background-color: white;
+            min-height: 150px;
+            padding: 6px;
+        }
+
+        .lessons-list {
+            list-style: none;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .lessons-list li {
+            color: #0056b3;
+            border-bottom: 1px dashed #eee;
+            padding: 3px 0;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 600px) {
+            .schedule-grid {
+                grid-template-columns: repeat(7, minmax(60px, 1fr));
+                overflow-x: auto;
+            }
+            .day-header { font-size: 10px; }
+            .lessons-list { font-size: 9px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div style="overflow-x: auto;">
+        <div class="schedule-grid">
+            <!-- Дни недели -->
+            <div class="day-header">Понедельник</div>
+            <div class="day-header">Вторник</div>
+            <div class="day-header">Среда</div>
+            <div class="day-header">Четверг</div>
+            <div class="day-header">Пятница</div>
+            <div class="day-header weekend">Суббота</div>
+            <div class="day-header weekend">Воскресенье</div>
+
+            <!-- Понедельник -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>Русский язык</li>
+                    <li>Литература</li>
+                    <li>Математика</li>
+                    <li>Узбекский язык</li>
+                </ul>
+            </div>
+
+            <!-- Вторник -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>История</li>
+                    <li>Математика</li>
+                    <li>Англ. язык</li>
+                    <li>Физкультура</li>
+                    <li>Естествознание</li>
+                    <li>Час будущего</li>
+                </ul>
+            </div>
+
+            <!-- Среда -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>Физкультура</li>
+                    <li>Русский язык</li>
+                    <li>Музыкальное иск.</li>
+                    <li>Литература</li>
+                    <li>Математика</li>
+                    <li>Англ. язык</li>
+                </ul>
+            </div>
+
+            <!-- Четверг -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>Англ. язык</li>
+                    <li>Естествознание</li>
+                    <li>Технология</li>
+                    <li>Узбекский язык</li>
+                </ul>
+            </div>
+
+            <!-- Пятница -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>Русский язык</li>
+                    <li>Воспитание</li>
+                    <li>ИЗО</li>
+                    <li>Математика</li>
+                    <li>История</li>
+                </ul>
+            </div>
+
+            <!-- Суббота -->
+            <div class="day-card">
+                <ul class="lessons-list">
+                    <li>Узбекский язык</li>
+                    <li>Инф. и ИТ</li>
+                    <li>Математика</li>
+                    <li>Англ. язык</li>
+                </ul>
+            </div>
+
+            <!-- Воскресенье -->
+            <div class="day-card"></div>
+        </div>
+    </div>
+
+</body>
+</html>
