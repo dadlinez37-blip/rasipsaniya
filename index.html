@@ -13,11 +13,13 @@
         }
 
         body {
-            background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
-            min-height: 100vh;
-            padding: 20px 10px;
+            background-color: #0f172a;
+            color: #f8fafc;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
@@ -27,171 +29,135 @@
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        /* Day Header Style */
-        .day-column {
-            background: rgba(255, 255, 255, 0.9);
+        .day-card {
+            background: #1e293b;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(5px);
+            padding: 20px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .day-header {
-            background: #34495e;
-            color: #ffffff;
-            padding: 12px 5px;
-            text-align: center;
-            font-size: 13px;
+        .day-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .day-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .day-header.weekend {
-            background: #e74c3c;
-        }
-
-        /* Lessons Container */
-        .lessons-list {
-            list-style: none;
-            padding: 8px;
+            color: #f43f5e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #334155;
             display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex-grow: 1;
-        }
-
-        .lessons-list li {
-            background-color: #f8f9fa;
-            color: #2c3e50;
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 500;
-            border-left: 3px solid #3498db;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            counter-increment: lesson-counter;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .lessons-list li::before {
-            content: counter(lesson-counter) ". ";
+        .lesson-list {
+            list-style: none;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background-color: #0f172a;
+            border-radius: 8px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .lesson-num {
             font-weight: bold;
-            margin-right: 6px;
-            color: #7f8c8d;
+            color: #a855f7;
+            width: 28px;
+            font-size: 0.95rem;
         }
 
-        .lessons-list {
-            counter-reset: lesson-counter;
-        }
-
-        .lessons-list li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 900px) {
-            .schedule-grid {
-                grid-template-columns: repeat(7, minmax(130px, 1fr));
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
+        .lesson-name {
+            font-size: 0.95rem;
+            color: #e2e8f0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="schedule-grid">
-            
-            <!-- Понедельник -->
-            <div class="day-column">
-                <div class="day-header">Понедельник</div>
-                <ul class="lessons-list">
-                    <li>Русский язык</li>
-                    <li>Литература</li>
-                    <li>Математика</li>
-                    <li>Узбекский язык</li>
-                </ul>
-            </div>
-
-            <!-- Вторник -->
-            <div class="day-column">
-                <div class="day-header">Вторник</div>
-                <ul class="lessons-list">
-                    <li>История</li>
-                    <li>Математика</li>
-                    <li>Англ. язык</li>
-                    <li>Физкультура</li>
-                    <li>Естествознание</li>
-                    <li>Час будущего</li>
-                </ul>
-            </div>
-
-            <!-- Среда -->
-            <div class="day-column">
-                <div class="day-header">Среда</div>
-                <ul class="lessons-list">
-                    <li>Физкультура</li>
-                    <li>Русский язык</li>
-                    <li>Музыкальное иск.</li>
-                    <li>Литература</li>
-                    <li>Математика</li>
-                    <li>Англ. язык</li>
-                </ul>
-            </div>
-
-            <!-- Четверг -->
-            <div class="day-column">
-                <div class="day-header">Четверг</div>
-                <ul class="lessons-list">
-                    <li>Англ. язык</li>
-                    <li>Естествознание</li>
-                    <li>Технология</li>
-                    <li>Узбекский язык</li>
-                </ul>
-            </div>
-
-            <!-- Пятница -->
-            <div class="day-column">
-                <div class="day-header">Пятница</div>
-                <ul class="lessons-list">
-                    <li>Русский язык</li>
-                    <li>Воспитание</li>
-                    <li>ИЗО</li>
-                    <li>Математика</li>
-                    <li>История</li>
-                </ul>
-            </div>
-
-            <!-- Суббота -->
-            <div class="day-column">
-                <div class="day-header weekend">Суббота</div>
-                <ul class="lessons-list">
-                    <li>Узбекский язык</li>
-                    <li>Инф. и ИТ</li>
-                    <li>Математика</li>
-                    <li>Англ. язык</li>
-                </ul>
-            </div>
-
-            <!-- Воскресенье -->
-            <div class="day-column">
-                <div class="day-header weekend">Воскресенье</div>
-                <ul class="lessons-list"></ul>
-            </div>
-
+<div class="container">
+    <div class="schedule-grid">
+        
+        <div class="day-card">
+            <div class="day-title">Понедельник</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">Русский язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Литература</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">Математика</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Узбекский язык</span></li>
+            </ul>
         </div>
+
+        <div class="day-card">
+            <div class="day-title">Вторник</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">История</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Математика</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">Англ. язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Физкультура</span></li>
+                <li class="lesson-item"><span class="lesson-num">5</span><span class="lesson-name">Естествознание</span></li>
+                <li class="lesson-item"><span class="lesson-num">6</span><span class="lesson-name">Час будущего</span></li>
+            </ul>
+        </div>
+
+        <div class="day-card">
+            <div class="day-title">Среда</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">Физкультура</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Русский язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">Музыкальное иск.</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Литература</span></li>
+                <li class="lesson-item"><span class="lesson-num">5</span><span class="lesson-name">Математика</span></li>
+                <li class="lesson-item"><span class="lesson-num">6</span><span class="lesson-name">Англ. язык</span></li>
+            </ul>
+        </div>
+
+        <div class="day-card">
+            <div class="day-title">Четверг</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">Англ. язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Естествознание</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">Технология</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Узбекский язык</span></li>
+            </ul>
+        </div>
+
+        <div class="day-card">
+            <div class="day-title">Пятница</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">Русский язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Воспитание</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">ИЗО</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Математика</span></li>
+                <li class="lesson-item"><span class="lesson-num">5</span><span class="lesson-name">История</span></li>
+            </ul>
+        </div>
+
+        <div class="day-card">
+            <div class="day-title">Суббота</div>
+            <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">Узбекский язык</span></li>
+                <li class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">Инф. и ИТ</span></li>
+                <li class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">Математика</span></li>
+                <li class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">Англ. язык</span></li>
+            </ul>
+        </div>
+
     </div>
+</div>
 
 </body>
 </html>
